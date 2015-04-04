@@ -1,13 +1,6 @@
 package nl.nvwoa.gillman.domain.familyselection;
 
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import nl.nvwoa.gillman.model.InputData;
 import nl.nvwoa.gillman.util.Conversions;
 import org.json.simple.JSONArray;
@@ -15,6 +8,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Component

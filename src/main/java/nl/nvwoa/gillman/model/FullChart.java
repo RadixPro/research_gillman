@@ -16,109 +16,90 @@ public class FullChart {
     private double raMc;
 
 
-     public List<Bodies> getBodiesOrderedByRisingTime() {
-     return bodiesOrderedByRisingTime;
-     }
-    
+    public List<Bodies> getBodiesOrderedByRisingTime() {
+        return bodiesOrderedByRisingTime;
+    }
+
     public List<CalculatedPosition> getCalculatedPositions() {
         return calculatedPositions;
     }
 
-    
-    public double getEpsilon() {
-        return epsilon;
-    }
-
-    
-    public String getFamilyId() {
-        return familyId;
-    }
-
-    
-    public String getFamilyRole() {
-        return familyRole;
-    }
-
-    
-    public String getId() {
-        return id;
-    }
-
-    
-    public double getLongitudeAsc() {
-        return longitudeAsc;
-    }
-
-    
-    public double getLongitudeMC() {
-        return longitudeMC;
-    }
-
-    
-    public PlanetarySequence getPlanetarySequence() {
-        return planetarySequence;
-    }
-
-    
-    public double getRaAsc() {
-        return raAsc;
-    }
-
-
-     public void setBodiesByRisingTime(final List<Bodies> bodiesOrdered) {
-     bodiesOrderedByRisingTime = bodiesOrdered;
-     }
-    
-    public double getRAMC() {
-        return raMc;
-    }
-
-    
     public void setCalculatedPositions(final List<CalculatedPosition> calculatedPositions) {
         this.calculatedPositions = calculatedPositions;
     }
 
-    
+    public double getEpsilon() {
+        return epsilon;
+    }
+
     public void setEpsilon(final double epsilon) {
         this.epsilon = epsilon;
     }
 
-    
+    public String getFamilyId() {
+        return familyId;
+    }
+
     public void setFamilyId(final String familyId) {
         this.familyId = familyId;
     }
 
-    
+    public String getFamilyRole() {
+        return familyRole;
+    }
+
     public void setFamilyRole(final String familyRole) {
         this.familyRole = familyRole;
     }
 
-    
+    public String getId() {
+        return id;
+    }
+
     public void setId(final String id) {
         this.id = id;
     }
 
-    
+    public double getLongitudeAsc() {
+        return longitudeAsc;
+    }
+
     public void setLongitudeAsc(final double longitudeAsc) {
         this.longitudeAsc = longitudeAsc;
     }
 
-    
+    public double getLongitudeMC() {
+        return longitudeMC;
+    }
+
     public void setLongitudeMC(final double longitudeMC) {
         this.longitudeMC = longitudeMC;
     }
 
-    
+    public PlanetarySequence getPlanetarySequence() {
+        return planetarySequence;
+    }
+
     public void setPlanetarySequence(final PlanetarySequence planetarySequence) {
         this.planetarySequence = planetarySequence;
     }
 
-    
+    public double getRaAsc() {
+        return raAsc;
+    }
+
     public void setRaAsc(final double raAsc) {
         this.raAsc = raAsc;
     }
 
-    
+    public void setBodiesByRisingTime(final List<Bodies> bodiesOrdered) {
+        bodiesOrderedByRisingTime = bodiesOrdered;
+    }
+
+    public double getRAMC() {
+        return raMc;
+    }
+
     public void setRaMc(final double ramc) {
         raMc = ramc;
     }

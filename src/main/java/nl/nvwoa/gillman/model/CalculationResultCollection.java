@@ -11,16 +11,13 @@ public class CalculationResultCollection {
         return allFullCharts;
     }
 
-
-    public String getDescription() {
-        return description;
-    }
-
-
     public void setAllFullCharts(final List<FullChart> allFullCharts) {
         this.allFullCharts = allFullCharts;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
     public void setDescription(final String description) {
         this.description = description;

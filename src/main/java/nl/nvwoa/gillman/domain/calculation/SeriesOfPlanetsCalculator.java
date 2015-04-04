@@ -44,7 +44,7 @@ public class SeriesOfPlanetsCalculator {
         fullChart.setLongitudeAsc(ascMc[0]);
         fullChart.setLongitudeMC(ascMc[1]);
         fullChart.setRaMc(ascMc[2]);
-        fullChart.setRaAsc(AstroMath.rigtAscensionForEclipticalPoint(fullChart.getLongitudeAsc(), fullChart.getEpsilon()));
+        fullChart.setRaAsc(AstroMath.rightAscensionForEclipticalPoint(fullChart.getLongitudeAsc(), fullChart.getEpsilon()));
         fullChart.setCalculatedPositions(calculatedPositions);
         fullChart.setPlanetarySequence(calcPlanetarySequence(fullChart));
         fullChart.setFamilyId(inputData.getGroupId());

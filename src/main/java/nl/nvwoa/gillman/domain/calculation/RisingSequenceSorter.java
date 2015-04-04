@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Component
-public class RisingSequenceSorter{
+public class RisingSequenceSorter {
 
     public List<SortablePosition> sortRisingSequence(final List<SortablePosition> positionsIn, final double referencePoint) {
         List<SortablePosition> positionsOut = positionsIn;

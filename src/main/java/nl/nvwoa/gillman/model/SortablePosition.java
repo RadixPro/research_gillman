@@ -3,8 +3,8 @@ package nl.nvwoa.gillman.model;
 public class SortablePosition {
     private final Bodies body;
     private final double position;
-    private double relativePosition;
     private final double risingTime;
+    private double relativePosition;
 
     public SortablePosition(final Bodies body, final double position, final double risingTime) {
         this.body = body;
@@ -13,28 +13,26 @@ public class SortablePosition {
         relativePosition = 0.0;
     }
 
-    
+
     public Bodies getBody() {
         return body;
     }
 
-    
+
     public double getPosition() {
         return position;
     }
 
-    
+
     public double getRelativePosition() {
         return relativePosition;
     }
 
-    
-    public double getRisingTime() {
-        return risingTime;
-    }
-
-    
     public void setRelativePosition(final double relativePosition) {
         this.relativePosition = relativePosition;
+    }
+
+    public double getRisingTime() {
+        return risingTime;
     }
 }

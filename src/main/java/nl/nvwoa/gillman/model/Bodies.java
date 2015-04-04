@@ -18,9 +18,9 @@ public enum Bodies {
     NEPTUNE(8),
     PLUTO(9);
 
-    private int id;
+    private final int id;
 
-    private Bodies(int id) {
+    Bodies(int id) {
         this.id = id;
     }
 

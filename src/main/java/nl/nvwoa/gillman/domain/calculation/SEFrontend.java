@@ -8,6 +8,7 @@ import swisseph.SwissEph;
 
 import java.io.File;
 
+@SuppressWarnings("UnusedAssignment")
 @Component
 public class SEFrontend {
     private final String path = "se" + File.separator;
@@ -47,7 +48,7 @@ public class SEFrontend {
         StringBuffer arg2 = new StringBuffer("");
         int arg3 = SweConst.SEFLG_SWIEPH; // ephemeris flag
         int arg4 = SweConst.SE_CALC_RISE | SweConst.SE_BIT_DISC_CENTER | SweConst.SE_BIT_NO_REFRACTION; // rsmi
-        double[] arg5 = { geoLon, geoLat, 0.0 };
+        double[] arg5 = {geoLon, geoLat, 0.0};
         double arg6 = 0.0;
         double arg7 = 0.0;
         DblObj arg8 = new DblObj();

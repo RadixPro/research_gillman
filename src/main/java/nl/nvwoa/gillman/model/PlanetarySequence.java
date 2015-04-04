@@ -9,20 +9,20 @@ public class PlanetarySequence {
         return bodiesInSequence;
     }
 
-    public String getFamilyGroupId() {
-        return familyGroupId;
-    }
-
-    public String getId() {
-        return id;
-    }
-
     public void setBodiesInSequence(final Bodies[] bodiesInSequence) {
         this.bodiesInSequence = bodiesInSequence;
     }
 
+    public String getFamilyGroupId() {
+        return familyGroupId;
+    }
+
     public void setFamilyGroupId(final String familyGroupId) {
         this.familyGroupId = familyGroupId;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setId(final String id) {

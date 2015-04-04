@@ -1,9 +1,6 @@
 package nl.nvwoa.gillman.domain.familyselection;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import nl.nvwoa.gillman.domain.dataconversion.InputDataCollection2JsonConverter;
 import nl.nvwoa.gillman.model.InputData;
 import nl.nvwoa.gillman.model.InputDataCollection;
@@ -11,15 +8,18 @@ import nl.nvwoa.gillman.util.Dictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 public class SelectionHandler {
+    private final List<InputData> selectedInputData = new ArrayList<>();
     @Autowired
     private InputDataCollection2JsonConverter converter;
     @Autowired
     private SelectionDataReader dataReader;
     private int familySequenceId = 0;
-    private final List<InputData> selectedInputData = new ArrayList<>();
 
     public void performSelection(final String fileIndicator) {
         final String unselectedFilename = constructUnselectedFilename(fileIndicator);
@@ -31,18 +31,18 @@ public class SelectionHandler {
 
     private void addToSelectedInputData(final List<InputData> currentInputData) {
         familySequenceId++;
-        for (InputData actualInputdata : currentInputData) {
-            actualInputdata.setGroupId(Integer.toString(familySequenceId));
-            selectedInputData.add(actualInputdata);
+        for (InputData actualInputData : currentInputData) {
+            actualInputData.setGroupId(Integer.toString(familySequenceId));
+            selectedInputData.add(actualInputData);
         }
     }
 
-    
+
     private String constructSelectedFilename(final String fileIndicator) {
         return Dictionary.PATH_TO_DATA + fileIndicator + Dictionary.SELECTED_EXTENSION;
     }
 
-    
+
     private String constructUnselectedFilename(final String fileIndicator) {
         return Dictionary.PATH_TO_DATA + fileIndicator + Dictionary.JSON_EXTENSION;
     }
@@ -65,7 +65,7 @@ public class SelectionHandler {
         return true;
     }
 
-    
+
     private List<InputData> selectFamilies(final List<InputData> allInputData) {
         List<InputData> currentInputData = new ArrayList<>();
         for (InputData inputData : allInputData) {

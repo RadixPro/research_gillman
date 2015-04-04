@@ -29,10 +29,9 @@ public class InputDataCollectionReader {
             } catch (org.json.simple.parser.ParseException e) {
                 // FIXME Auto-generated catch block
             }
+            assert jsonObject != null;
             JSONArray inputs = (JSONArray) jsonObject.get("allInputData");
             Iterator<JSONObject> i = inputs.iterator();
-            String familyRole;
-            String recordIndex = "";
             List<InputData> allRecords = new ArrayList<>();
             while (i.hasNext()) {
                 JSONObject innerObj = i.next();

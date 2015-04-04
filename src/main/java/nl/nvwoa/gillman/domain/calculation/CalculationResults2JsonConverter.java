@@ -1,8 +1,6 @@
 package nl.nvwoa.gillman.domain.calculation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import nl.nvwoa.gillman.model.CalculationResultCollection;
@@ -24,15 +22,9 @@ public class CalculationResults2JsonConverter {
             File jsonFile = new File(filename);
             // mapper.writeValue(System.out, inputDataCollection);
             mapper.writeValue(jsonFile, calculationResultCollection);
-        } catch (JsonGenerationException e) {
-            // FIXME Auto-generated catch block
-            System.out.println("JsonGenerationException" + e.getMessage());
-        } catch (JsonMappingException e) {
-            // FIXME Auto-generated catch block
-            System.out.println("JsonMappingException" + e.getMessage());
         } catch (IOException e) {
             // FIXME Auto-generated catch block
-            System.out.println("IOException" + e.getMessage());
+            System.out.println("Error while handling Json to write calculated results : " + e.getMessage());
         }
     }
 }

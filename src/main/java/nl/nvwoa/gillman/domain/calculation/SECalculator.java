@@ -4,7 +4,6 @@ package nl.nvwoa.gillman.domain.calculation;
 import nl.nvwoa.gillman.model.Bodies;
 import nl.nvwoa.gillman.model.CalculatedPosition;
 import nl.nvwoa.gillman.util.AstroMath;
-import nl.nvwoa.gillman.util.RangeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import swisseph.SweDate;
@@ -38,10 +37,10 @@ public class SECalculator {
         position.setRightAscension(equatPos[0]);
         position.setDeclination(equatPos[1]);
 //        double risingTime = seFrontend.calcRisingTime(sweDate, index, geoLon, geoLat);
-         double[] ascMc = calcAscMc(sweDate, geoLon, geoLat);
-         double epsilon = calculateObliquity(sweDate);
+        double[] ascMc = calcAscMc(sweDate, geoLon, geoLat);
+        double epsilon = calculateObliquity(sweDate);
 
-         double risingTime = findRisingTimeForFixedPosition(sweDate, geoLon, geoLat, position, ascMc[2], epsilon);
+        double risingTime = findRisingTimeForFixedPosition(sweDate, geoLon, geoLat, position, ascMc[2], epsilon);
 //         //define rising time as the distance from the ascendant.
 //         double risingTime = RangeUtil.limitValueToRange(position.getLongitude() - ascMc[0], 0, 360);
         position.setRisingTime(risingTime);
