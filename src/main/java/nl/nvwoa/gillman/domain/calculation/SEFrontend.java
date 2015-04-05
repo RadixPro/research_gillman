@@ -55,19 +55,6 @@ public class SEFrontend {
         StringBuffer arg9 = new StringBuffer();
         swissEph.swe_rise_trans(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
         return arg8.val;
-        // int32 swe_rise_trans(
-        // double tjd_ut, /* search after this time (UT) */
-        // int32 ipl, /* planet number, if planet or moon */
-        // char *starname, /* star name, if star */
-        // int32 epheflag, /* ephemeris flag */
-        // int32 rsmi, /* integer specifying that rise, set, orone of the two meridian transits is
-        // wanted. see definition below */
-        // double *geopos, /* array of three doubles containing
-        // * geograph. long., lat., height of observer */
-        // double atpress, /* atmospheric pressure in mbar/hPa */
-        // double attemp, /* atmospheric temperature in deg. C */
-        // double *tret, /* return address (double) for rise time etc. */
-        // char *serr); /* return address for error message */
     }
 
     private int createFiltersEcliptical() {
@@ -80,7 +67,6 @@ public class SEFrontend {
         int flags = 0;
         flags = flags | SweConst.SEFLG_SWIEPH;
         flags = flags | SweConst.SEFLG_EQUATORIAL;
-        // flags = flags | SweConst.SEFLG_TOPOCTR; // TODO check of parallax mee wordt genomen
         return flags;
     }
 }

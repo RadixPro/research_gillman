@@ -5,7 +5,7 @@ public enum CalculationTypes {
     LONGITUDE("long"),
     RIGHT_ASCENSION("ra"),
     ALTITUDE_BODY("altb"),
-    ALTUTUDE_ECLIPTICAL_POS("altp")  ;
+    ALTITUDE_ECLIPTICAL_POS("altp")  ;
 
     private String abbreviation;
 
@@ -13,7 +13,7 @@ public enum CalculationTypes {
         this.abbreviation = abbreviation;
     }
 
-    public static CalculationTypes getCalclationTypeForAbbreviation(final String abbreviation) {
+    public static CalculationTypes getCalculationTypeForAbbreviation(final String abbreviation) {
         for (CalculationTypes actCalculationType : CalculationTypes.values()) {
             if (actCalculationType.getAbbreviation().equalsIgnoreCase(abbreviation)) {
                 return actCalculationType;

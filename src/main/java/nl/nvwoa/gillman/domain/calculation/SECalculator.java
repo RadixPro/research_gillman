@@ -25,8 +25,8 @@ public class SECalculator {
     }
 
     public double calculateObliquity(final SweDate sweDate) {
-        double[] epsilonandNutation = seFrontend.calcNutationAndObliquity(sweDate);
-        return epsilonandNutation[1];
+        double[] epsilonAndNutation = seFrontend.calcNutationAndObliquity(sweDate);
+        return epsilonAndNutation[1];
     }
 
     public CalculatedPosition calculatePlanet(final int index, final SweDate sweDate, final double geoLon, final double geoLat, CalculationTypes calculationType) {
@@ -35,14 +35,14 @@ public class SECalculator {
         double[] eclipticPos = seFrontend.calcBodyLong(sweDate, index, geoLon, geoLat);
         position.setLongitude(eclipticPos[0]);
         position.setLatitude(eclipticPos[1]);
-        double[] equatPos = seFrontend.calcBodyRA(sweDate, index, geoLon, geoLat);
-        position.setRightAscension(equatPos[0]);
-        position.setDeclination(equatPos[1]);
+        double[] equatorialPos = seFrontend.calcBodyRA(sweDate, index, geoLon, geoLat);
+        position.setRightAscension(equatorialPos[0]);
+        position.setDeclination(equatorialPos[1]);
         double risingTime = 0.0;
         double[] ascMc = calcAscMc(sweDate, geoLon, geoLat);
         if (calculationType.equals(CalculationTypes.ALTITUDE_BODY)) {
             risingTime = seFrontend.calcRisingTime(sweDate, index, geoLon, geoLat);
-        } else if (calculationType.equals(CalculationTypes.ALTUTUDE_ECLIPTICAL_POS)) {
+        } else if (calculationType.equals(CalculationTypes.ALTITUDE_ECLIPTICAL_POS)) {
             double epsilon = calculateObliquity(sweDate);
             risingTime = findRisingTimeForFixedPosition(sweDate, geoLon, geoLat, position, ascMc[2], epsilon);
         } else if (calculationType.equals(CalculationTypes.LONGITUDE)) {

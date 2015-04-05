@@ -28,7 +28,7 @@ public class CalculationHandler {
         final CalculationResultCollection calculationResultCollection = new CalculationResultCollection(); // TODO autowire, no singleton
         calculationResultCollection.setDescription("Calculated results for : " + fileIndicator + ". CalculationType : " + calculationType.getAbbreviation());
         calculationResultCollection.setAllFullCharts(calculatedCharts);
-        converter.convert(calculatedFilename, calculationResultCollection); // TODO Converter niet naar file laten schrijven
+        converter.convert(calculatedFilename, calculationResultCollection); // TODO use separate class to write to file
     }
 
 

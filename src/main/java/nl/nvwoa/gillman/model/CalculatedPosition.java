@@ -22,9 +22,6 @@ public class CalculatedPosition {
         this.declination = declination;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
 
     public void setLatitude(final double latitude) {
         this.latitude = latitude;
