@@ -3,7 +3,9 @@ package nl.nvwoa.gillman.domain.calculation;
 
 import nl.nvwoa.gillman.model.Bodies;
 import nl.nvwoa.gillman.model.CalculatedPosition;
+import nl.nvwoa.gillman.model.CalculationTypes;
 import nl.nvwoa.gillman.util.AstroMath;
+import nl.nvwoa.gillman.util.RangeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import swisseph.SweDate;
@@ -27,7 +29,7 @@ public class SECalculator {
         return epsilonandNutation[1];
     }
 
-    public CalculatedPosition calculatePlanet(final int index, final SweDate sweDate, final double geoLon, final double geoLat) {
+    public CalculatedPosition calculatePlanet(final int index, final SweDate sweDate, final double geoLon, final double geoLat, CalculationTypes calculationType) {
         CalculatedPosition position = new CalculatedPosition();
         position.setBodies(defineBody(index));
         double[] eclipticPos = seFrontend.calcBodyLong(sweDate, index, geoLon, geoLat);
@@ -36,13 +38,16 @@ public class SECalculator {
         double[] equatPos = seFrontend.calcBodyRA(sweDate, index, geoLon, geoLat);
         position.setRightAscension(equatPos[0]);
         position.setDeclination(equatPos[1]);
-//        double risingTime = seFrontend.calcRisingTime(sweDate, index, geoLon, geoLat);
+        double risingTime = 0.0;
         double[] ascMc = calcAscMc(sweDate, geoLon, geoLat);
-        double epsilon = calculateObliquity(sweDate);
-
-        double risingTime = findRisingTimeForFixedPosition(sweDate, geoLon, geoLat, position, ascMc[2], epsilon);
-//         //define rising time as the distance from the ascendant.
-//         double risingTime = RangeUtil.limitValueToRange(position.getLongitude() - ascMc[0], 0, 360);
+        if (calculationType.equals(CalculationTypes.ALTITUDE_BODY)) {
+            risingTime = seFrontend.calcRisingTime(sweDate, index, geoLon, geoLat);
+        } else if (calculationType.equals(CalculationTypes.ALTUTUDE_ECLIPTICAL_POS)) {
+            double epsilon = calculateObliquity(sweDate);
+            risingTime = findRisingTimeForFixedPosition(sweDate, geoLon, geoLat, position, ascMc[2], epsilon);
+        } else if (calculationType.equals(CalculationTypes.LONGITUDE)) {
+            risingTime = RangeUtil.limitValueToRange(position.getLongitude() - ascMc[0], 0, 360);
+        }
         position.setRisingTime(risingTime);
         return position;
     }

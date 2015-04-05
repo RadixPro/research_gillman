@@ -18,23 +18,23 @@ public class SeriesOfPlanetsCalculator {
     @Autowired
     private SECalculator seCalculator;
 
-    public List<FullChart> calculateSet(final InputDataCollection inputDataCollection) {
+    public List<FullChart> calculateSet(final InputDataCollection inputDataCollection, CalculationTypes calculationType) {
         List<FullChart> allCharts = new ArrayList<>();
         List<InputData> allInputData = inputDataCollection.getAllInputData();
         for (InputData inputData : allInputData) {
-            allCharts.add(calcFullChart(inputData));
+            allCharts.add(calcFullChart(inputData, calculationType));
         }
         return allCharts;
     }
 
-    private FullChart calcFullChart(final InputData inputData) {
+    private FullChart calcFullChart(final InputData inputData, CalculationTypes calculationType) {
         double geoLat = inputData.getGeographicLatitude();
         double geoLon = inputData.getGeographicLongitude();
         SweDate sweDate = Conversions.simpleDateTime2SweDate(inputData.getSimpleDateTime());
         double[] ascMc = seCalculator.calcAscMc(sweDate, geoLon, geoLat);
         List<CalculatedPosition> calculatedPositions = new ArrayList<>();
         for (int i = 0; i <= 9; i++) {
-            calculatedPositions.add(seCalculator.calculatePlanet(i, sweDate, geoLon, geoLat));
+            calculatedPositions.add(seCalculator.calculatePlanet(i, sweDate, geoLon, geoLat, calculationType));
         }
         FullChart fullChart = new FullChart();
         fullChart.setFamilyId(inputData.getGroupId());
