@@ -39,7 +39,7 @@ public class InputDataCollectionReader {
                 inputDataRecord.setDescription((String) innerObj.get("description"));
                 inputDataRecord.setGeographicLatitude((Double) innerObj.get("geographicLatitude"));
                 inputDataRecord.setGeographicLongitude((Double) innerObj.get("geographicLongitude"));
-                inputDataRecord.setGroupId("");
+                inputDataRecord.setGroupId((String) innerObj.get("groupId"));
                 inputDataRecord.setGroupMemberType((String) innerObj.get("description"));
                 inputDataRecord.setId((String) innerObj.get("id"));
                 inputDataRecord.setName("");
