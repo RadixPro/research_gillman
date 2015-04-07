@@ -1,6 +1,7 @@
 package nl.nvwoa.gillman;
 
 import nl.nvwoa.gillman.domain.calculation.CalculationController;
+import nl.nvwoa.gillman.domain.controlgroup.ControlGroupController;
 import nl.nvwoa.gillman.domain.dataconversion.DataConversionController;
 import nl.nvwoa.gillman.domain.familyselection.SelectionController;
 import nl.nvwoa.gillman.domain.matching.MatchingController;
@@ -18,6 +19,8 @@ public class Frontend {
     private CalculationController calculationController;
     @Autowired
     private MatchingController matchingController;
+    @Autowired
+    private ControlGroupController controlGroupController;
     private String fileIndicator = "";
     private CalculationTypes calculationType;
 
@@ -27,21 +30,12 @@ public class Frontend {
         System.out.println("Data converted to Json format");
         selectionCOntroller.handleSelection(fileIndicator);
         System.out.println("Selected valid families");
+        controlGroupController.createControlGroup(fileIndicator);
+        System.out.println("Created control group");
         calculationController.handleCalculation(fileIndicator, calculationType);
         System.out.println("Calculation completed");
-        matchingController.performMatches(fileIndicator);
+        matchingController.performMatches(fileIndicator, calculationType);
         System.out.println("Matching completed.");
-
-        /*
-            @Autowired
-	private SelectionAPI selectionAPI;
-
-	public void selectFamilies(@Nonnull final String dataSetArgument) {
-		selectionAPI.convert(dataSetArgument);
-	}
-         */
-
-
     }
 
     private void readArguments(String[] args) {

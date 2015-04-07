@@ -21,8 +21,18 @@ public class CalculationHandler {
     private InputDataCollectionReader inputReader;
 
     public void performCalculation(final String fileIndicator, final CalculationTypes calculationType) {
-        final String calculatedFilename = constructCalculatedFilename(fileIndicator);
-        final String selectedFilename = constructSelectedFilename(fileIndicator);
+        String selectedFilename = constructSelectedFilename(fileIndicator);
+        String calculatedFilename = constructCalculatedFilename(fileIndicator);
+        calculateIt(selectedFilename, calculatedFilename, calculationType, fileIndicator);
+        selectedFilename = constructSelectedFilenameForControlGroup(fileIndicator);
+        calculatedFilename = constructCalculatedFilenameForControlGroup(fileIndicator);
+        calculateIt(selectedFilename, calculatedFilename, calculationType, fileIndicator + "-control");
+    }
+
+
+
+    public void calculateIt(final String selectedFilename, final String calculatedFilename, final CalculationTypes calculationType, final String fileIndicator) {
+
         final InputDataCollection inputDataCollection = inputReader.readInputData(selectedFilename);
         final List<FullChart> calculatedCharts = calculator.calculateSet(inputDataCollection, calculationType);
         final CalculationResultCollection calculationResultCollection = new CalculationResultCollection(); // TODO autowire, no singleton
@@ -31,11 +41,17 @@ public class CalculationHandler {
         converter.convert(calculatedFilename, calculationResultCollection); // TODO use separate class to write to file
     }
 
+    private String constructCalculatedFilenameForControlGroup(final String fileIndicator) {
+        return Dictionary.PATH_TO_DATA + fileIndicator + Dictionary.CONTROL_GROUP_CALCULATED_EXTENSION;
+    }
 
     private String constructCalculatedFilename(final String fileIndicator) {
         return Dictionary.PATH_TO_DATA + fileIndicator + Dictionary.CALCULATED_EXTENSION;
     }
 
+    private String constructSelectedFilenameForControlGroup(final String fileIndicator) {
+        return Dictionary.PATH_TO_DATA + fileIndicator + Dictionary.CONTROL_GROUP_EXTENSION;
+    }
 
     private String constructSelectedFilename(final String fileIndicator) {
         return Dictionary.PATH_TO_DATA + fileIndicator + Dictionary.SELECTED_EXTENSION;
