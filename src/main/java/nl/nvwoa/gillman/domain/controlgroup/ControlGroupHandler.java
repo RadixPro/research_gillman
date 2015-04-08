@@ -26,7 +26,9 @@ public class ControlGroupHandler {
         String controlGroupFilename = constructControlGroupFilename(fileIndicator);
         final InputDataCollection inputDataCollection = inputReader.readInputData(selectedFilename);
         final List<InputData> allInputData = inputDataCollection.getAllInputData();
+        System.out.println("Size of inputdata :" + allInputData.size());
         createControlGroupInputData(allInputData);
+        System.out.println("Size of control goup inputdata :" + controlGroupInputData.size());  // TODO 3 te weinig
         InputDataCollection collection = new InputDataCollection();
         collection.setDescription(fileIndicator + "-control-group");
         collection.setAllInputData(controlGroupInputData);

@@ -11,26 +11,32 @@ import java.util.List;
 
 @Component
 public class MatchingHandler {
-    private final List<MatchSet> allMatchSets = new ArrayList<>();
+    private List<MatchSet> allMatchSets;
+
     @Autowired
     private CalculationResultsReader resultsReader;
     @Autowired
     private MatchData2JsonConverter converter;
 
     public void handleMatches(final String fileIndicator, CalculationTypes calculationType) {
+        allMatchSets = new ArrayList<>();
         String calculatedFilename = constructCalculatedFilename(fileIndicator);
         String outputFilename = constructOutputFilename(fileIndicator, calculationType);
         performMatching(fileIndicator, calculationType, calculatedFilename, outputFilename);
+
+
+        allMatchSets = new ArrayList<>();
         calculatedFilename = constructCalculatedFilenameForControlGroup(fileIndicator);
         outputFilename = constructOutputFilenameForControlGroup(fileIndicator, calculationType);
-        System.out.println("calculatedFilename :" + calculatedFilename);
-        System.out.println("outputFilename :" + outputFilename);
         performMatching(fileIndicator, calculationType, calculatedFilename, outputFilename);
     }
 
 
 
-    public void performMatching(final String fileIndicator, final CalculationTypes calculationType, final String calculatedFilename, final String outputFilename) {
+
+
+    private void performMatching(final String fileIndicator, final CalculationTypes calculationType, final String calculatedFilename, final String outputFilename) {
+        List<MatchSet> currentMatchSets = new ArrayList<>();
         final CalculationResultCollection resultsCollection = resultsReader.readCalculationResultsData(calculatedFilename);
         // TODO resultsCollection analyseren op matches en totalen en specs berekenen en opslaan.
         List<FullChart> charts = resultsCollection.getAllFullCharts();

@@ -14,6 +14,11 @@ import java.io.IOException;
 public class InputDataCollection2JsonConverter {
     // example: http://www.studytrails.com/java/json/jackson-create-json.jsp
     public void convert(final String filename, final InputDataCollection inputDataCollection) {
+
+        System.out.println("Writing to " + filename);
+        System.out.println("Nr of records :" +inputDataCollection.getAllInputData().size());
+
+
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         mapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);

@@ -15,6 +15,8 @@ import java.io.IOException;
 public class MatchData2JsonConverter {
     // example: http://www.studytrails.com/java/json/jackson-create-json.jsp
     public void convert(final String filename, final MatchData matchData) {
+        System.out.println("Writing mapped data to " + filename);
+        System.out.println("Nr of records :" + matchData.getMatchSets().size());
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         mapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
