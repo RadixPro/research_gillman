@@ -19,7 +19,6 @@ public class RisingSequenceSorter {
         Collections.sort(positionsOut, new Comparator<SortablePosition>() {
             @Override
             public int compare(final SortablePosition o1, final SortablePosition o2) {
-                // return Double.compare(o1.getRelativePosition(), o2.getRelativePosition());
                 return Double.compare(o1.getRisingTime(), o2.getRisingTime());
             }
         });

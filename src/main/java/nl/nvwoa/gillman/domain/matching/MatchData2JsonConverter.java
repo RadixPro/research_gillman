@@ -3,7 +3,6 @@ package nl.nvwoa.gillman.domain.matching;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import nl.nvwoa.gillman.model.InputDataCollection;
 import nl.nvwoa.gillman.model.MatchData;
 import org.springframework.stereotype.Component;
 

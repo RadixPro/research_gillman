@@ -12,8 +12,6 @@ import java.util.List;
 
 @Controller
 public class DataConversionController {
-    private final String inputExtension = ".data";
-    private final String outputExtension = ".json";
     @Autowired
     private CsvDataLineSelector csvDataLineSelector;
     @Autowired
@@ -27,8 +25,6 @@ public class DataConversionController {
     @Autowired
     private TextFileReader textFileReader;
 
-    private static void createHeredityWithPL() {
-    }
 
     public void createJsonFile(String fileIndicator) {
         DataDefinition dataDefinition = createDataDefinition();
@@ -67,11 +63,13 @@ public class DataConversionController {
     }
 
     private void createJson(final String fileIndicator, final InputDataCollection inputDataCollection) {
+        String outputExtension = ".json";
         String jsonFilename = fileIndicator + outputExtension;
         jsonConverter.convert(jsonFilename, inputDataCollection);
     }
 
     private String createPathAndFilename(String fileIndicator) {
+        String inputExtension = ".data";
         return fileIndicator + inputExtension;
     }
 }

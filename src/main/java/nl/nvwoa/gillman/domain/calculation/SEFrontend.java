@@ -17,28 +17,28 @@ public class SEFrontend {
     public double[] calcBodyLong(final SweDate sweDate, final int body, final double geoLon, final double geoLat) {
         double[] results = new double[6];
         swissEph.swe_set_topo(geoLon, geoLat, 0.0);
-        int returnCode = swissEph.calc(sweDate.getJulDay(), body, createFiltersEcliptical(), results);
+        swissEph.calc(sweDate.getJulDay(), body, createFiltersEcliptical(), results);
         return results;
     }
 
     public double[] calcBodyRA(final SweDate sweDate, final int body, final double geoLon, final double geoLat) {
         double[] results = new double[6];
         swissEph.swe_set_topo(geoLon, geoLat, 0.0);
-        int returnCode = swissEph.calc(sweDate.getJulDay(), body, createFiltersEquatorial(), results);
+        swissEph.calc(sweDate.getJulDay(), body, createFiltersEquatorial(), results);
         return results;
     }
 
     public double[] calcDomification(final SweDate sweDate, final double geoLat, final double geoLong) {
         double[] cuspPositions = new double[13];
-        double[] asmcPositions = new double[10];
-        int returnCode = swissEph.swe_houses(sweDate.getJulDay(), createFiltersEcliptical(), geoLat, geoLong, 'Y', cuspPositions, asmcPositions);
-        return asmcPositions;
+        double[] ascMcPositions = new double[10];
+        swissEph.swe_houses(sweDate.getJulDay(), createFiltersEcliptical(), geoLat, geoLong, 'Y', cuspPositions, ascMcPositions);
+        return ascMcPositions;
     }
 
     public double[] calcNutationAndObliquity(final SweDate sweDate) {
         double[] values = new double[6];
         StringBuffer errors = new StringBuffer();
-        int returnCode = swissEph.swe_calc(sweDate.getJulDay(), SweConst.SE_ECL_NUT, createFiltersEcliptical(), values, errors);
+        swissEph.swe_calc(sweDate.getJulDay(), SweConst.SE_ECL_NUT, createFiltersEcliptical(), values, errors);
         return values;
     }
 
@@ -47,7 +47,7 @@ public class SEFrontend {
         int arg1 = body;
         StringBuffer arg2 = new StringBuffer("");
         int arg3 = SweConst.SEFLG_SWIEPH; // ephemeris flag
-        int arg4 = SweConst.SE_CALC_RISE | SweConst.SE_BIT_DISC_CENTER | SweConst.SE_BIT_NO_REFRACTION; // rsmi
+        int arg4 = SweConst.SE_CALC_RISE | SweConst.SE_BIT_DISC_CENTER | SweConst.SE_BIT_NO_REFRACTION;
         double[] arg5 = {geoLon, geoLat, 0.0};
         double arg6 = 0.0;
         double arg7 = 0.0;

@@ -31,7 +31,7 @@ public class CalculationHandler {
 
 
 
-    public void calculateIt(final String selectedFilename, final String calculatedFilename, final CalculationTypes calculationType, final String fileIndicator) {
+    private void calculateIt(final String selectedFilename, final String calculatedFilename, final CalculationTypes calculationType, final String fileIndicator) {
 
         final InputDataCollection inputDataCollection = inputReader.readInputData(selectedFilename);
         final List<FullChart> calculatedCharts = calculator.calculateSet(inputDataCollection, calculationType);

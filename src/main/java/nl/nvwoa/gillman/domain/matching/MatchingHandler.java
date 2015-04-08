@@ -36,22 +36,18 @@ public class MatchingHandler {
 
 
     private void performMatching(final String fileIndicator, final CalculationTypes calculationType, final String calculatedFilename, final String outputFilename) {
-        List<MatchSet> currentMatchSets = new ArrayList<>();
         final CalculationResultCollection resultsCollection = resultsReader.readCalculationResultsData(calculatedFilename);
-        // TODO resultsCollection analyseren op matches en totalen en specs berekenen en opslaan.
         List<FullChart> charts = resultsCollection.getAllFullCharts();
         String currentFamily = "";
         List<FullChart> familySet = null;
         for (FullChart chart : charts) {
-            if ((familySet != null) && currentFamily.equalsIgnoreCase(chart.getFamilyId())) { // uitbreiden bestaande family
+            if ((familySet != null) && currentFamily.equalsIgnoreCase(chart.getFamilyId())) {
                 familySet.add(chart);
             } else {
-                if (familySet != null) { // geen match, dus nieuwe family, onder handen family afronden
+                if (familySet != null) {
                     handleExistingSet(familySet);
-                    familySet = new ArrayList<>(); // volgende family maken
-
                 }
-                familySet = new ArrayList<>(); // eerste family maken
+                familySet = new ArrayList<>();
                 familySet.add(chart);
                 currentFamily = chart.getFamilyId();
             }
@@ -75,15 +71,7 @@ public class MatchingHandler {
         matchData.setNumberOfMatchPairs(totalSets);
         matchData.setTotalWithAtLeastOneMatch(totalWithAtLeastOneMatch);
         converter.convert(outputFilename, matchData);
-        /*
-		 * Lees horoscopen en combineer mensen uit dezelfde familie
-		 * maak voor elke familie te vergelijken setjes (F en M elk met alle kinderen) ==> vergelijkingsobject
-		 * bereken voor elke set het aantal matches
-		 * ]
-		 * ]
-		 * bereken aantal sets en aantal matches ==> oplsaan in overall object AllMatches
-		 * wegschrijven naar bestand
-		 */
+
     }
 
     private String constructOutputFilename(String fileIndicator, CalculationTypes calculationType) {

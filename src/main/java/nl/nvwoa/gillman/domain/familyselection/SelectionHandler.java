@@ -66,7 +66,7 @@ public class SelectionHandler {
     }
 
 
-    private List<InputData> selectFamilies(final List<InputData> allInputData) {
+    private void selectFamilies(final List<InputData> allInputData) {
         List<InputData> currentInputData = new ArrayList<>();
         for (InputData inputData : allInputData) {
             if (inputData.getGroupMemberType().equalsIgnoreCase("F")) {
@@ -93,7 +93,6 @@ public class SelectionHandler {
         if (isValidFamily(currentInputData)) {
             addToSelectedInputData(currentInputData);
         }
-        return currentInputData;
     }
 
     private void writeInputData(final String filename) {

@@ -27,6 +27,7 @@ public class CalculationResultsReader {
             } catch (org.json.simple.parser.ParseException e) {
                 // FIXME Auto-generated catch block
             }
+            assert jsonObject != null;
             JSONArray inputs = (JSONArray) jsonObject.get("allFullCharts");
             Iterator<JSONObject> i = inputs.iterator();
             List<FullChart> allFullCharts = new ArrayList<>();
@@ -57,8 +58,6 @@ public class CalculationResultsReader {
                 planetarySequence.setId(id);
                 planetarySequence.setFamilyGroupId(familyId);
                 planetarySequence.setBodiesInSequence(bodiesInSequence);
-                // PlanetarySequence sequence = (PlanetarySequence) sequenceList;
-                // Bodies[] bodies = ((PlanetarySequence) sequenceList).getBodiesInSequence();
                 chart.setPlanetarySequence(planetarySequence);
                 chart.setFamilyRole((String) innerObj.get("familyRole"));
 

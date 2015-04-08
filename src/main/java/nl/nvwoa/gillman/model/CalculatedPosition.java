@@ -3,8 +3,8 @@ package nl.nvwoa.gillman.model;
 public class CalculatedPosition {
     private Bodies body;
     private double declination;
-    private double latitude;
     private double longitude;
+    private double latitude;
     private double rightAscension;
     private double risingTime;
 

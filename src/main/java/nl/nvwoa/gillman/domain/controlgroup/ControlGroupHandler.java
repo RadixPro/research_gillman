@@ -2,7 +2,6 @@ package nl.nvwoa.gillman.domain.controlgroup;
 
 import nl.nvwoa.gillman.domain.calculation.InputDataCollectionReader;
 import nl.nvwoa.gillman.domain.dataconversion.InputDataCollection2JsonConverter;
-import nl.nvwoa.gillman.model.CalculationTypes;
 import nl.nvwoa.gillman.model.InputData;
 import nl.nvwoa.gillman.model.InputDataCollection;
 import nl.nvwoa.gillman.util.Dictionary;
@@ -28,11 +27,11 @@ public class ControlGroupHandler {
         final List<InputData> allInputData = inputDataCollection.getAllInputData();
         System.out.println("Size of inputdata :" + allInputData.size());
         createControlGroupInputData(allInputData);
-        System.out.println("Size of control goup inputdata :" + controlGroupInputData.size());  // TODO 3 te weinig
+        System.out.println("Size of control group inputdata :" + controlGroupInputData.size());  // TODO 3 missing
         InputDataCollection collection = new InputDataCollection();
         collection.setDescription(fileIndicator + "-control-group");
         collection.setAllInputData(controlGroupInputData);
-        converter.convert(constructControlGroupFilename(fileIndicator), collection);
+        converter.convert(controlGroupFilename, collection);
 
 
     }
@@ -63,7 +62,7 @@ public class ControlGroupHandler {
                     firstMother = mother;
                     firstFather = father;
                     firstFamily = true;
-                } else if (firstFamily) {
+                } else {
                     secondFamily = true;
                 }
             } else {

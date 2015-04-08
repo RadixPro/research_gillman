@@ -7,7 +7,7 @@ public enum CalculationTypes {
     ALTITUDE_BODY("altb"),
     ALTITUDE_ECLIPTICAL_POS("altp")  ;
 
-    private String abbreviation;
+    private final String abbreviation;
 
     CalculationTypes (final String abbreviation) {
         this.abbreviation = abbreviation;

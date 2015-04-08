@@ -6,11 +6,11 @@ public class PlanetarySequence {
     private String id;
 
     public Bodies[] getBodiesInSequence() {
-        return bodiesInSequence;
+        return bodiesInSequence.clone();
     }
 
     public void setBodiesInSequence(final Bodies[] bodiesInSequence) {
-        this.bodiesInSequence = bodiesInSequence;
+        this.bodiesInSequence = bodiesInSequence.clone();
     }
 
     public String getFamilyGroupId() {

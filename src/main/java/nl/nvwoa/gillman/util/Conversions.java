@@ -56,41 +56,6 @@ public class Conversions {
         return constructDoubleFromLatLong(geoLongUpCase, pos, posNeg);
     }
 
-    public static SweDate dateTime2SweDate(final String dateTxt, final String utTxt) {
-        String[] parts = dateTxt.split("-");
-        int day = 0;
-        int month = 0;
-        int year = 0;
-        try {
-            final String dayTxt = parts[2];
-            final String monthTxt = parts[1];
-            final String yearTxt = parts[0];
-            day = Integer.parseInt(dayTxt);
-            month = Integer.parseInt(monthTxt);
-            year = Integer.parseInt(yearTxt);
-        } catch (Exception e) {
-            System.out.println("Error in date : " + dateTxt);
-            // TODO handle errors
-        }
-        parts = utTxt.split(":");
-        double ut = 0;
-        try {
-            final String hourTxt = parts[0];
-            final String minuteTxt = parts[1];
-            String secondTxt = parts[2];
-            if (secondTxt == null) {
-                secondTxt = "0";
-            }
-            final int hour = Integer.parseInt(hourTxt);
-            final int minute = Integer.parseInt(minuteTxt);
-            final int second = Integer.parseInt(secondTxt);
-            ut = hour + (minute / MINUTES_PER_HOUR_DEGREE) + (second / SECONDS_PER_HOUR_DEGREE);
-        } catch (Exception e) {
-            System.out.println("Error in time : " + utTxt);
-            // TODO handle errors
-        }
-        return new SweDate(year, month, day, ut);
-    }
 
     public static SweDate simpleDateTime2SweDate(final SimpleDateTime simpleDateTime) {
         final int year = simpleDateTime.getYear();

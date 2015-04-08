@@ -4,7 +4,7 @@ package nl.nvwoa.gillman.model;
 public enum FamilyMember {
     DAUGHTER("D"), FATHER("F"), MOTHER("M"), SON("S");
 
-    private String abbreviation;
+    private final String abbreviation;
 
     FamilyMember(final String abbreviation) {
         this.abbreviation = abbreviation;
@@ -19,7 +19,7 @@ public enum FamilyMember {
         return null;
     }
 
-    public String getAbbreviation() {
+    private String getAbbreviation() {
         return abbreviation;
     }
 }
