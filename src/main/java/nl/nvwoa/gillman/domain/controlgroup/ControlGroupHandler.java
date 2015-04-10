@@ -69,6 +69,7 @@ public class ControlGroupHandler {
                 originalChildren.add(inputData);
             }
         }
+        addFamilyToControlGroup(father, mother, childrenToMove);
         addFamilyToControlGroup(firstFather, firstMother, originalChildren);
 
     }
