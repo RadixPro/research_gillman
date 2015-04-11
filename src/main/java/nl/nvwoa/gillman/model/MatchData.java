@@ -2,15 +2,23 @@ package nl.nvwoa.gillman.model;
 
 import java.util.List;
 
-/**
- * Created by jan on 6-4-15.
- */
+
 public class MatchData {
 
     private List<MatchSet> matchSets;
     private int numberOfMatchPairs;
     private int numberOfMatches;
     private int totalWithAtLeastOneMatch;
+    private int totalWithAtLEastOneMatchFor2Parents;
+    private String description;
+
+    public int getTotalWithAtLEastOneMatchFor2Parents() {
+        return totalWithAtLEastOneMatchFor2Parents;
+    }
+
+    public void setTotalWithAtLEastOneMatchFor2Parents(int totalWithAtLEastOneMatchFor2Parents) {
+        this.totalWithAtLEastOneMatchFor2Parents = totalWithAtLEastOneMatchFor2Parents;
+    }
 
     public int getTotalWithAtLeastOneMatch() {
         return totalWithAtLeastOneMatch;
@@ -19,8 +27,6 @@ public class MatchData {
     public void setTotalWithAtLeastOneMatch(int totalWithAtLeastOneMatch) {
         this.totalWithAtLeastOneMatch = totalWithAtLeastOneMatch;
     }
-
-    private String description;
 
     public List<MatchSet> getMatchSets() {
         return matchSets;

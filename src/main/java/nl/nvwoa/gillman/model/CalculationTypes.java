@@ -3,7 +3,6 @@ package nl.nvwoa.gillman.model;
 
 public enum CalculationTypes {
     LONGITUDE("long"),
-    RIGHT_ASCENSION("ra"),
     ALTITUDE_BODY("altb"),
     ALTITUDE_ECLIPTICAL_POS("altp")  ;
 

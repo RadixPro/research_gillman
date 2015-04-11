@@ -1,5 +1,6 @@
 package nl.nvwoa.gillman.domain.calculation;
 
+import nl.nvwoa.gillman.model.CalculatedPosition;
 import org.springframework.stereotype.Component;
 import swisseph.DblObj;
 import swisseph.SweConst;

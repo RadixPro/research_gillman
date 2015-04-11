@@ -17,14 +17,16 @@ public class MatchingHandler {
     private CalculationResultsReader resultsReader;
     @Autowired
     private MatchData2JsonConverter converter;
+    private int countChildrenWithMatches;
 
     public void handleMatches(final String fileIndicator, CalculationTypes calculationType) {
         allMatchSets = new ArrayList<>();
+        countChildrenWithMatches = 0;
         String calculatedFilename = constructCalculatedFilename(fileIndicator);
         String outputFilename = constructOutputFilename(fileIndicator, calculationType);
         performMatching(fileIndicator, calculationType, calculatedFilename, outputFilename);
 
-
+        countChildrenWithMatches = 0;
         allMatchSets = new ArrayList<>();
         calculatedFilename = constructCalculatedFilenameForControlGroup(fileIndicator);
         outputFilename = constructOutputFilenameForControlGroup(fileIndicator, calculationType);
@@ -70,6 +72,7 @@ public class MatchingHandler {
         matchData.setNumberOfMatches(totalMatches);
         matchData.setNumberOfMatchPairs(totalSets);
         matchData.setTotalWithAtLeastOneMatch(totalWithAtLeastOneMatch);
+        matchData.setTotalWithAtLEastOneMatchFor2Parents(countChildrenWithMatches);
         converter.convert(outputFilename, matchData);
 
     }
@@ -119,6 +122,10 @@ public class MatchingHandler {
         for (MatchMember child : children) {
             allMatchSets.add(new MatchSet(father, child, countMatches(father, child)));
             allMatchSets.add(new MatchSet(mother, child, countMatches(mother, child)));
+            if (countMatches(father, child) + countMatches(mother, child) > 0) {
+                countChildrenWithMatches++;
+            }
+
         }
 
     }
